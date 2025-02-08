@@ -2,10 +2,12 @@ package com.example.miprimeraaplicacion;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     RadioButton opt;
     EditText num1, num2;
 
+    Spinner spn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,19 +30,24 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.btnCalcular);
         num1 = findViewById(R.id.txtNum1);
         num2 = findViewById(R.id.txtNum2);
-        rgb = findViewById(R.id.rgoOpciones);
 
-        rgb.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        spn = findViewById(R.id.spnOpciones);
+        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.optRaiz || checkedId == R.id.optFactorial || checkedId == R.id.optCubica) {
-                    num2.setText("");
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 6 || position == 7 || position == 8) {
+                    num2.setText("0.00");
                     num2.setEnabled(false);
                 } else {
                     num2.setEnabled(true);
                 }
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,44 +58,44 @@ public class MainActivity extends AppCompatActivity {
                 double num2 = tempVal.isEnabled() ? Double.parseDouble(tempVal.getText().toString()) : 0;
                 double respuesta = 0.0;
 
-                opt = findViewById(R.id.optSuma);
-                if (opt.isChecked()) {
-                    respuesta = num1 + num2;
-                }
-                opt = findViewById(R.id.optResta);
-                if (opt.isChecked()) {
-                    respuesta = num1 - num2;
-                }
-                opt = findViewById(R.id.optMultiplicacion);
-                if (opt.isChecked()) {
-                    respuesta = num1 * num2;
-                }
-                opt = findViewById(R.id.optDivision);
-                if (opt.isChecked()) {
-                    respuesta = num1 / num2;
-                }
-                opt = findViewById(R.id.optExponente);
-                if (opt.isChecked()) {
-                    respuesta = Math.pow(num1, num2);
-                }
-                opt = findViewById(R.id.optPorcentaje);
-                if (opt.isChecked()) {
-                    respuesta = (num1 * num2) / 100;
-                }
-                opt = findViewById(R.id.optRaiz);
-                if (opt.isChecked()) {
-                    respuesta = Math.sqrt(num1);
-                }
-                opt= findViewById(R.id.optFactorial);
-                if (opt.isChecked()){
-                    respuesta = 1;
-                    for (int i = 2; i <= num1; i++){
-                        respuesta *= i;
-                    }
-                }
-                opt = findViewById(R.id.optCubica);
-                if (opt.isChecked()){
-                    respuesta = Math.cbrt(num1);
+                spn = findViewById(R.id.spnOpciones);
+                switch (spn.getSelectedItemPosition()){
+                    case 0:
+                        respuesta = num1 + num2;
+                        break;
+                    case 1:
+                        respuesta = num1 - num2;
+                        break;
+                    case 2:
+                        respuesta = num1 * num2;
+                        break;
+                    case 3:
+                        respuesta = num1 / num2;
+                        break;
+                    case  4:
+                        respuesta = Math.pow(num1, num2);
+                        break;
+                    case 5:
+                        respuesta = (num1 * num2) / 100;
+                        break;
+                    case 6:
+                        respuesta = Math.sqrt(num1);
+                        break;
+                    case  7:
+                        respuesta = 1;
+                        for (int i = 2; i <= num1; i++){
+                            respuesta *= i;
+                        }
+                        break;
+                    case 8:
+                        respuesta = Math.cbrt(num1);
+                        break;
+                    case 9:
+                        respuesta = num1 % num2;
+                        break;
+                    case 10:
+                        respuesta = Math.max(num1,num2);
+                        break;
                 }
 
                 tempVal = findViewById(R.id.lblRespuesta);
