@@ -1,17 +1,49 @@
 <resources>
     <string name="app_name">miPrimeraAplicacion</string>
-    <string-array name="opciones">
-        <item>SUMA</item>
-        <item>RESTA</item>
-        <item>MULTIPLICACION</item>
-        <item>DIVISION</item>
-        <item>EXPONENTE</item>
-        <item>PORCENTAJE</item>
-        <item>RAIZ</item>
-        <item>FACTORIAL</item>
-        <item>CUBICA</item>
-        <item>MODULO</item>
-        <item>MAYOR</item>
-
+    <string-array name="moneda">
+        <item>Dolar</item>
+        <item>Euro</item>
+        <item>Quetzalez</item>
+        <item>Lempiras</item>
+        <item>Cordobas</item>
+        <item>Colon CR</item>
+        <item>Colon SV</item>
     </string-array>
+    <string-array name="Longitud">
+        <item>Metro</item>
+        <item>Kilómetro</item>
+        <item>Centímetro</item>
+        <item>Milímetro</item>
+        <item>Pulgada</item>
+        <item>Pie</item>
+        <item>Yarda</item>
+        <item>Milla</item>
+    </string-array>
+    <string-array name="Tiempo">
+        <item>Segundos</item>
+        <item>Minutos</item>
+        <item>Horas</item>
+        <item>Días</item>
+        <item>Semanas</item>
+        <item>Meses</item>
+        <item>Años</item>
+    </string-array>
+
+    <string-array name="Almacenamiento">
+        <item>Byte (B)</item>
+        <item>Kilobyte (KB)</item>
+        <item>Megabyte (MB)</item>
+        <item>Gigabyte (GB)</item>
+        <item>Terabyte (TB)</item>
+        <item>Petabyte (PB)</item>
+    </string-array>
+
+    <string-array name="transferencia">
+        <item>bps (Bits por segundo)</item>
+        <item>Kbps (Kilobits por segundo)</item>
+        <item>Mbps (Megabits por segundo)</item>
+        <item>Gbps (Gigabits por segundo)</item>
+        <item>Tbps (Terabits por segundo)</item>
+    </string-array>
+
 </resources>

@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,108 +16,102 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    TabHost tbh;
     Button btn;
     TextView tempVal;
-    RadioGroup rgb;
-    RadioButton opt;
-    EditText num1, num2;
+    EditText textCantidad;
+    TextView lblRespuesta;
+    Spinner spnDe, spnA;
+    conversores objConversores = new conversores();
 
-    Spinner spn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        tbh = findViewById(R.id.tbhConversor);
+        tbh.setup();
+        tbh.addTab(tbh.newTabSpec("Moneda").setContent(R.id.tabMoneda).setIndicator("MONEDAS", null));
+        tbh.addTab(tbh.newTabSpec("Longitud").setContent(R.id.tabLongitud).setIndicator("LONGITUD", null));
+        tbh.addTab(tbh.newTabSpec("Tiempo").setContent(R.id.tabTiempo).setIndicator("TIEMPO", null));
+        tbh.addTab(tbh.newTabSpec("Almacenamiento").setContent(R.id.tabAlmacenamiento).setIndicator("ALMACENAMIENTO", null));
+        tbh.addTab(tbh.newTabSpec("Tranferencia").setContent(R.id.tabTransferencia).setIndicator("TRANFERENCIA", null));
         btn = findViewById(R.id.btnCalcular);
-        num1 = findViewById(R.id.txtNum1);
-        num2 = findViewById(R.id.txtNum2);
-
-        spn = findViewById(R.id.spnOpciones);
-        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 6 || position == 7 || position == 8) {
-                    num2.setText("0.00");
-                    num2.setEnabled(false);
-                } else {
-                    num2.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
+        textCantidad = findViewById(R.id.textCantidad);
+        lblRespuesta = findViewById(R.id.lblRespuesta);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                tempVal = findViewById(R.id.txtNum1);
-                double num1 = Double.parseDouble(tempVal.getText().toString());
-                tempVal = findViewById(R.id.txtNum2);
-                double num2 = tempVal.isEnabled() ? Double.parseDouble(tempVal.getText().toString()) : 0;
-                double respuesta = 0.0;
+            public void onClick(View view) {
+                try {
+                    int opcion = tbh.getCurrentTab();
 
-                String msg = "";
+                    if (opcion == 0) {
+                        spnDe = findViewById(R.id.spnDeMonedas);
+                        spnA = findViewById(R.id.spnAMonedas);
+                    } else if (opcion == 1) {
+                        spnDe = findViewById(R.id.spnDeLongitud);
+                        spnA = findViewById(R.id.spnALongitud);
+                    } else if (opcion == 2) {
+                        spnDe = findViewById(R.id.spnDeTiempo);
+                        spnA = findViewById(R.id.spnATiempo);
+                    } else if (opcion == 3) {
+                        spnDe = findViewById(R.id.spnDeAlmacenamiento);
+                        spnA = findViewById(R.id.spnAAlmacenamiento);
+                    } else if (opcion == 4) {
+                        spnDe = findViewById(R.id.spnDeTransferencia);
+                        spnA = findViewById(R.id.spnATransferencia);
+                    }
 
-                spn = findViewById(R.id.spnOpciones);
-                switch (spn.getSelectedItemPosition()){
-                    case 0:
-                        respuesta = num1 + num2;
-                        msg = "La suma es: "+ respuesta;
-                        break;
-                    case 1:
-                        respuesta = num1 - num2;
-                        msg = "La resta es: "+ respuesta;
-                        break;
-                    case 2:
-                        respuesta = num1 * num2;
-                        msg = "La multiplicacion es: "+ respuesta;
-                        break;
-                    case 3:
-                        respuesta = num1 / num2;
-                        msg = "La division es: "+ respuesta;
-                        break;
-                    case  4:
-                        respuesta = Math.pow(num1, num2);
-                        msg = "La respuesta es: " + respuesta;
-                        break;
-                    case 5:
-                        respuesta = (num1 * num2) / 100;
-                        msg = "El porcentaje es: "+ respuesta;
-                        break;
-                    case 6:
-                        respuesta = Math.sqrt(num1);
-                        msg = "La raiz cuadrada es: "+ respuesta;
-                        break;
-                    case  7:
-                        respuesta = 1;
-                        for (int i = 2; i <= num1; i++){
-                            respuesta *= i;
-                        }
-                        msg = "El factorial es: "+ respuesta;
-                        break;
-                    case 8:
-                        respuesta = Math.cbrt(num1);
-                        msg = "La raiz cubica es: "+ respuesta;
-                        break;
-                    case 9:
-                        respuesta = num1 % num2;
-                        msg = "El modulo es: "+ respuesta;
-                        break;
-                    case 10:
-                        respuesta = Math.max(num1,num2);
-                        msg = "El numero mayor es: "+ respuesta;
-                        break;
+
+                    int de = spnDe.getSelectedItemPosition();
+                    int a = spnA.getSelectedItemPosition();
+
+                    String cantidadTexto = textCantidad.getText().toString().trim();
+                    if (cantidadTexto.isEmpty()) {
+                        Toast.makeText(MainActivity.this, "⚠ Ingrese una cantidad", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    double cantidad = Double.parseDouble(cantidadTexto);
+
+                    if (cantidad < 0) {
+                        Toast.makeText(MainActivity.this, "⚠ Ingrese un número positivo", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if (de == a) {
+                        Toast.makeText(MainActivity.this, "⚠ Seleccione diferentes unidades", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    double respuesta = objConversores.convertir(opcion, de, a, cantidad);
+
+                    Toast.makeText(MainActivity.this, "✅ Conversión: " + respuesta, Toast.LENGTH_LONG).show();
+                    lblRespuesta.setText("Respuesta: " + respuesta);
+
+                } catch (NumberFormatException e) {
+                    Toast.makeText(MainActivity.this, "❌ Error: Solo se permiten números", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, "❌ Error inesperado: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
-                tempVal = findViewById(R.id.lblRespuesta);
-                tempVal.setText("Respuesta: " + respuesta);
-                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
             }
         });
+    }
+    class conversores {
+        double[][] valores = {
+                {1, 0.98, 7.73, 25.45, 36.78, 508.87, 8.74},
+                {1, 0.001, 100, 1000, 39.37, 3.2808, 1.0936, 0.00062137},
+                {1, 1.0/60, 1.0/3600, 1.0/86400, 1.0/604800, 1.0/2628000, 1.0/31536000},
+                {1, 0.000976563, 9.53674e-7, 9.31323e-10, 9.09495e-13, 8.88178e-16},
+                {1, 0.001, 0.000001, 0.000000001, 0.000000000001}
+
+        };
+
+        public double convertir(int opcion, int de, int a, double cantidad){
+            return valores[opcion][a] / valores[opcion][de] * cantidad;
+        }
     }
 }
 
