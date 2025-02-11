@@ -17,31 +17,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <RelativeLayout
                     android:id="@+id/tabMoneda"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
                     <TextView
                         android:id="@+id/lblDeMonedas"
                         android:text="DE: "
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <Spinner
                         android:entries="@array/moneda"
                         android:id="@+id/spnDeMonedas"
@@ -49,8 +44,7 @@
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="-20dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/lblAMonedas"
                         android:text="A: "
@@ -58,8 +52,7 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <Spinner
                         android:entries="@array/moneda"
                         android:id="@+id/spnAMonedas"
@@ -67,9 +60,8 @@
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="40dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"/>
                 </RelativeLayout>
-
                 <RelativeLayout
                     android:id="@+id/tabLongitud"
                     android:layout_width="match_parent"
@@ -82,8 +74,7 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <Spinner
                         android:entries="@array/Longitud"
                         android:id="@+id/spnDeLongitud"
@@ -91,8 +82,7 @@
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="-20dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/lblALongitud"
                         android:text="A: "
@@ -100,8 +90,7 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <Spinner
                         android:entries="@array/Longitud"
                         android:id="@+id/spnALongitud"
@@ -109,9 +98,9 @@
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="40dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </RelativeLayout>
+                        android:layout_height="wrap_content"/>
 
+                </RelativeLayout>
                 <RelativeLayout
                     android:id="@+id/tabTiempo"
                     android:layout_width="match_parent"
@@ -124,8 +113,7 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <Spinner
                         android:entries="@array/Tiempo"
                         android:id="@+id/spnDeTiempo"
@@ -133,8 +121,7 @@
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="-20dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/lblATiempo"
                         android:text="A: "
@@ -142,8 +129,7 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <Spinner
                         android:entries="@array/Tiempo"
                         android:id="@+id/spnATiempo"
@@ -151,8 +137,9 @@
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="40dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"/>
                 </RelativeLayout>
+
 
                 <RelativeLayout
                     android:id="@+id/tabAlmacenamiento"
@@ -166,8 +153,7 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <Spinner
                         android:entries="@array/Almacenamiento"
                         android:id="@+id/spnDeAlmacenamiento"
@@ -175,7 +161,7 @@
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="-20dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:id="@+id/lblAAlmacenamiento"
@@ -184,8 +170,7 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <Spinner
                         android:entries="@array/Almacenamiento"
                         android:id="@+id/spnAAlmacenamiento"
@@ -193,9 +178,8 @@
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="40dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"/>
                 </RelativeLayout>
-
                 <RelativeLayout
                     android:id="@+id/tabTransferencia"
                     android:layout_width="match_parent"
@@ -208,16 +192,15 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <Spinner
-                        android:entries="@array/transferencia"
+                        android:entries="@array/Transferencia"
                         android:id="@+id/spnDeTransferencia"
                         android:layout_below="@id/lblDeTransferencia"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="-20dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:id="@+id/lblATransferencia"
@@ -226,44 +209,114 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"/>
                     <Spinner
-                        android:entries="@array/transferencia"
+                        android:entries="@array/Transferencia"
                         android:id="@+id/spnATransferencia"
                         android:layout_below="@id/spnDeTransferencia"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="40dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"/>
                 </RelativeLayout>
-
+                <RelativeLayout
+                    android:id="@+id/tabMasa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/lblDeMasa"
+                        android:text="DE: "
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:entries="@array/Masa"
+                        android:id="@+id/spnDeMasa"
+                        android:layout_below="@id/lblDeMasa"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginTop="-20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/lblAMasa"
+                        android:text="A: "
+                        android:layout_below="@id/spnDeMasa"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:entries="@array/Masa"
+                        android:id="@+id/spnAMasa"
+                        android:layout_below="@id/spnDeMasa"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/tabVolumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/lblDeVolumen"
+                        android:text="DE: "
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:entries="@array/Volumen"
+                        android:id="@+id/spnDeVolumen"
+                        android:layout_below="@id/lblDeVolumen"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginTop="-20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/lblAVolumen"
+                        android:text="A: "
+                        android:layout_below="@id/spnDeVolumen"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Spinner
+                        android:entries="@array/Volumen"
+                        android:id="@+id/spnAVolumen"
+                        android:layout_below="@id/spnDeVolumen"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
             </FrameLayout>
         </LinearLayout>
     </TabHost>
+
     <EditText
-        android:id="@+id/textCantidad"
         android:hint="cantidad"
         android:layout_below="@id/tbhConversor"
         android:layout_marginTop="40dp"
+        android:id="@+id/textCantidad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btnCalcular"
-        android:text="CALCULAR"
         android:layout_below="@id/textCantidad"
         android:layout_marginTop="40dp"
+        android:text="CALCULAR"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/lblRespuesta"
-        android:text="Respuesta: ?"
-        android:layout_below="@id/btnCalcular"
+        android:layout_below="@+id/btnCalcular"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
+        android:text="Respuesta: ?"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"/>
 </RelativeLayout>
