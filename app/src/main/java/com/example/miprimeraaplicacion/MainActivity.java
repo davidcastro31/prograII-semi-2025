@@ -1,5 +1,9 @@
 package com.example.miprimeraaplicacion;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,65 +31,59 @@ import android.widget.TextView;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-    TabHost tbh;
-    Button btnCalcular;
     TextView tempVal;
-    EditText textCantidad;
-    TextView lblRespuesta;
-    Spinner spnDe, spnA;
-
-
+    SensorManager sensorManager;
+    Sensor sensor;
+    SensorEventListener sensorEventListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tbh = findViewById(R.id.tbhConversor);
-        btnCalcular = findViewById(R.id.btnCalcular);
-        textCantidad = findViewById(R.id.txtNum1);
-        lblRespuesta = findViewById(R.id.lblRespuesta);
+        sensorLuz();
 
-        tbh.setup();
-        TabHost.TabSpec tab1 = tbh.newTabSpec("Moneda");
-        tab1.setIndicator("Moneda");
-        tab1.setContent(R.id.tabCuota);
-        tbh.addTab(tab1);
-
-        TabHost.TabSpec tab2 = tbh.newTabSpec("Longitud");
-        tab2.setIndicator("Longitud");
-        tab2.setContent(R.id.tabLongitud);
-        tbh.addTab(tab2);
-
-
-        btnCalcular.setOnClickListener(new View.OnClickListener() {
+    }
+    @Override
+    protected void onResume() {
+        iniciar();
+        super.onResume();
+    }
+    @Override
+    protected void onPause() {
+        detener();
+        super.onPause();
+    }
+    private void iniciar(){
+        sensorManager.registerListener(sensorEventListener, sensor, 2000*1000);
+    }
+    private void detener(){
+        sensorManager.unregisterListener(sensorEventListener);
+    }
+    private void sensorLuz() {
+        tempVal = findViewById(R.id.lblSensorAcelerometro);
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        if (sensor == null) {
+            tempVal.setText("Tu dispositivo, NO tiene el senor de ACELEROMETRO");
+            finish();
+        }
+        sensorEventListener = new SensorEventListener() {
             @Override
-            public void onClick(View view) {
-                calcularTarifa();
+            public void onSensorChanged(SensorEvent event) {
+                double x = event.values[0];
+                double y = event.values[1];
+                double z = event.values[2];
+                tempVal.setText("Desplazamiento X= " + x + "; Y= " + y + "; Z= " + z);
             }
-        });
 
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
     }
-    private void calcularTarifa() {
-        String input = textCantidad.getText().toString();
-        if (input.isEmpty()) {
-            lblRespuesta.setText("Ingrese la cantidad de metros consumidos");
-            return;
-        }
-
-        int metrosConsumidos = Integer.parseInt(input);
-        double totalPagar = 0;
-
-        if (metrosConsumidos <= 18) {
-            totalPagar = 6;
-        } else if (metrosConsumidos <= 28) {
-            totalPagar = 6 + (metrosConsumidos - 18) * 0.45;
-        } else {
-            totalPagar = 6 + (10 * 0.45) + ((metrosConsumidos - 28) * 0.65);
-        }
-
-        lblRespuesta.setText("Total a pagar: $" + String.format("%.2f", totalPagar));
     }
-}
+
 
 
 
