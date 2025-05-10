@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.miprimeraaplicacion.ui.HomeFragment"
+        android:label="Home" />
+
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.miprimeraaplicacion.ui.NotificationsFragment"
+        android:label="Notificaciones" />
+
+    <fragment
+        android:id="@+id/friendsFragment"
+        android:name="com.example.miprimeraaplicacion.ui.FriendsFragment"
+        android:label="Amigos" >
+        <action
+            android:id="@+id/action_friendsFragment_to_addFriendFragment"
+            app:destination="@id/addFriendFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addFriendFragment"
+        android:name="com.example.miprimeraaplicacion.ui.AddFriendFragment"
+        android:label="Agregar Amigo" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.miprimeraaplicacion.ui.ProfileFragment"
+        android:label="Perfil">
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_preferencesFragment"
+            app:destination="@id/preferencesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.miprimeraaplicacion.ui.EditProfileFragment"
+        android:label="Modificar Perfil" />
+
+    <fragment
+        android:id="@+id/preferencesFragment"
+        android:name="com.example.miprimeraaplicacion.ui.PreferencesFragment"
+        android:label="Preferencias" />
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.miprimeraaplicacion.ui.ChatFragment"
+        android:label="Chat">
+        <action
+            android:id="@+id/action_chat_to_files"
+            app:destination="@id/filesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/filesFragment"
+        android:name="com.example.miprimeraaplicacion.ui.FilesFragment"
+        android:label="Archivos" />
+
+</navigation>
+

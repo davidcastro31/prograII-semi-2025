@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "741527283541",
+    "firebase_url": "https://proyectofinal-e3c64-default-rtdb.firebaseio.com",
+    "project_id": "proyectofinal-e3c64",
+    "storage_bucket": "proyectofinal-e3c64.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741527283541:android:fae99e7dc9d2cfb84ab1dc",
+        "android_client_info": {
+          "package_name": "com.example.miprimeraaplicacion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ-7Sbt6d3dM54fFlf4OF1N0G5gvosNhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
